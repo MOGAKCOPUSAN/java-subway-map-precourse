@@ -60,4 +60,8 @@ public class Line {
     public boolean hasNotStation(Station station) {
         return !stations.contains(station);
     }
+
+    public void delete(Station station) {
+        stations.remove(station);
+    }
 }
