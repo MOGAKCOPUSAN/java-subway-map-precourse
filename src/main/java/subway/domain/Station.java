@@ -22,7 +22,11 @@ public class Station {
         }
     }
 
-    public boolean isDuplicated(String name) {
-        return StationRepository.isDuplicated(name);
+    public static boolean isDuplicated(String name) {
+        return StationRepository.getStationCountByName(name) > 0;
+    }
+
+    public void add() {
+        StationRepository.addStation(this);
     }
 }
