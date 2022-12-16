@@ -2,6 +2,7 @@ package subway.view;
 
 import java.util.Scanner;
 import java.util.Set;
+import java.util.regex.Pattern;
 import subway.Constants;
 
 public class InputView {
@@ -17,7 +18,9 @@ public class InputView {
 
     private static final Set<String> SECTION_NUMBERS = Set.of(Constants.INPUT_REGISTRATION,
         Constants.INPUT_DELETE, Constants.INPUT_BACK);
-    public static final int MIN_NAME_LENGTH = 2;
+    private static final int MIN_NAME_LENGTH = 2;
+    private static final String ONLY_NUMBER_REGEX = "^[0-9]+$";
+
 
     public String readMainNumber() {
         System.out.println("## 메인 화면\n"
@@ -65,7 +68,7 @@ public class InputView {
         return readStationName();
     }
 
-    public String readStationName() {
+    private String readStationName() {
         String input = scanner.nextLine();
         validateNameLength(input);
         return input;
@@ -99,7 +102,7 @@ public class InputView {
         return readLineName();
     }
 
-    public String readLineName() {
+    private String readLineName() {
         String input = scanner.nextLine();
         validateNameLength(input);
         return input;
@@ -118,5 +121,55 @@ public class InputView {
     public String readDeleteLineName() {
         System.out.println("## 삭제할 노선 이름을 입력하세요.\n");
         return readLineName();
+    }
+
+    public String readSectionNumber() {
+        System.out.println("## 구간 관리 화면\n"
+            + "1. 구간 등록\n"
+            + "2. 구간 삭제\n"
+            + "B. 돌아가기");
+        printFeatureMessage();
+        String input = scanner.nextLine();
+        validateSectionNumber(input);
+        return input;
+    }
+
+    private void validateSectionNumber(String input) {
+        if (!SECTION_NUMBERS.contains(input)) {
+            throw new IllegalArgumentException("잘못된 기능 번호입니다.");
+        }
+    }
+
+    public String readSectionLine() {
+        System.out.println("## 노선을 입력하세요.");
+        return readLineName();
+    }
+
+    public String readSectionStation() {
+        System.out.println("## 역이름을 입력하세요.");
+        return readStationName();
+    }
+
+    public String readSectionOrder() {
+        System.out.println("## 순서를 입력하세요.");
+        String input = scanner.nextLine();
+        validateOrder(input);
+        return input;
+    }
+
+    private void validateOrder(String input) {
+        if (!Pattern.matches(ONLY_NUMBER_REGEX, input)) {
+            throw new IllegalArgumentException("순서는 0이상인 숫자만 입력가능합니다.");
+        }
+    }
+
+    public String readSectionDeleteLine() {
+        System.out.println("## 삭제할 구간의 노선을 입력하세요.");
+        return readLineName();
+    }
+
+    public String readSectionDeleteStation() {
+        System.out.println("## 삭제할 구간의 역을 입력하세요.");
+        return readStationName();
     }
 }
