@@ -59,13 +59,13 @@ public class SectionInputView {
         return getSectionStation();
     }
 
-    public String getSectionLine() throws IOException {
+    private String getSectionLine() throws IOException {
         String lineName = reader.readLine();
         InputValidator.checkLineAndStation(lineName);
         return lineName;
     }
 
-    public String getSectionStation() throws IOException {
+    private String getSectionStation() throws IOException {
         String stationName = reader.readLine();
         InputValidator.checkLineAndStation(stationName);
         return stationName;
