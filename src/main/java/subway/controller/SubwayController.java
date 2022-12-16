@@ -30,7 +30,6 @@ public class SubwayController {
             userChoice = getMainUserChoice();
             start(userChoice);
         } while (canContinue(userChoice));
-
     }
 
     private boolean canContinue(String userChoice) {
