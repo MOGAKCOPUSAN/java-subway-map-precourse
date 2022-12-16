@@ -44,4 +44,12 @@ public class OutputView {
         System.out.println("## 노선 목록");
         printResult(lineNames);
     }
+
+    public void printRegisterSection() {
+        System.out.println(RESULT_PREFIX + "구간이 등록되었습니다.");
+    }
+
+    public void printDeleteSection() {
+        System.out.println(RESULT_PREFIX + "구간이 삭제되었습니다.");
+    }
 }
