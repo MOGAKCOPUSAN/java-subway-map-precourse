@@ -19,4 +19,12 @@ public class StationService {
     public List<Station> getStations() {
         return StationRepository.stations();
     }
+
+    public void delete(String name) {
+        Station station = StationRepository.findByName(name);
+        if (station.isRegistered()) {
+            throw new IllegalArgumentException("노선에 등록된 역은 삭제할 수 없습니다.");
+        }
+        StationRepository.deleteStation(name);
+    }
 }
