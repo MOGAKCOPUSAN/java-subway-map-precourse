@@ -41,14 +41,14 @@ public class StationInputView {
     public String getResisterStationName() throws IOException {
         printMessage(STATION_REGISTER_INPUT_MESSAGE);
         String stationName = reader.readLine();
-        InputValidator.checkKorean(stationName);
+        InputValidator.checkLineAndStation(stationName);
         return stationName;
     }
 
     public String getDeleteStationName() throws IOException {
         printMessage(STATION_DELETE_INPUT_MESSAGE);
         String stationName = reader.readLine();
-        InputValidator.checkKorean(stationName);
+        InputValidator.checkLineAndStation(stationName);
         return stationName;
     }
 

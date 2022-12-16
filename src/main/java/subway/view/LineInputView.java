@@ -42,28 +42,28 @@ public class LineInputView {
     public String getRegisterLineName() throws IOException {
         printMessage(LINE_REGISTER_INPUT_MESSAGE);
         String lineName = reader.readLine();
-        InputValidator.checkKorean(lineName);
+        InputValidator.checkLineAndStation(lineName);
         return lineName;
     }
 
     public String getUpperStation() throws IOException {
         printMessage(LINE_UPPER_STATION_MESSAGE);
         String stationName = reader.readLine();
-        InputValidator.checkKorean(stationName);
+        InputValidator.checkLineAndStation(stationName);
         return stationName;
     }
 
     public String getLowerStation() throws IOException {
         printMessage(LINE_LOWER_STATION_MESSAGE);
         String stationName = reader.readLine();
-        InputValidator.checkKorean(stationName);
+        InputValidator.checkLineAndStation(stationName);
         return stationName;
     }
 
     public String getDeleteLineName() throws IOException {
         printMessage(LINE_DELETE_INPUT_MESSAGE);
         String lineName = reader.readLine();
-        InputValidator.checkKorean(lineName);
+        InputValidator.checkLineAndStation(lineName);
         return lineName;
     }
 

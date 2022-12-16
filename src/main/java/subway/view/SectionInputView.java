@@ -61,13 +61,13 @@ public class SectionInputView {
 
     public String getSectionLine() throws IOException {
         String lineName = reader.readLine();
-        InputValidator.checkKorean(lineName);
+        InputValidator.checkLineAndStation(lineName);
         return lineName;
     }
 
     public String getSectionStation() throws IOException {
         String stationName = reader.readLine();
-        InputValidator.checkKorean(stationName);
+        InputValidator.checkLineAndStation(stationName);
         return stationName;
     }
 
