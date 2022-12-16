@@ -23,7 +23,7 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
-    public Line findByName(String name) {
+    public static Line findByName(String name) {
         return lines.stream()
                 .filter(line -> line.getName().equals(name))
                 .findAny()
