@@ -18,6 +18,16 @@ public class StationController {
     private final StationService stationService = new StationService();
     private final OutputView outputView = new OutputView();
 
+    private void register() {
+        String stationName = getUserStationName();
+        try{
+            stationService.add(stationName);
+            outputView.showStationRegisterResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
     private String getUserStationName() {
         try {
             return stationInputView.getResisterStationName();
