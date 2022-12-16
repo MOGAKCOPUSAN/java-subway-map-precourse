@@ -18,6 +18,18 @@ public class LineController {
     private final LineService lineService = new LineService();
     private final OutputView outputView = new OutputView();
 
+    private void register() {
+        String lineName = getRegisterLineName();
+        String upperStation = getUpperStation();
+        String lowerStation = getLowerStation();
+        try {
+            lineService.add(lineName, upperStation, lowerStation);
+            outputView.showLineRegisterResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
     private String getRegisterLineName() {
         try {
             String lineName = lineInputView.getRegisterLineName();
