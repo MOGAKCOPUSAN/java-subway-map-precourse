@@ -8,6 +8,7 @@ import subway.domain.StationService;
 
 public class StationController extends Controller {
 
+    @Override
     public void run() {
         String stationNumber = inputView.readStationNumber();
         if (stationNumber.equals(Constants.INPUT_REGISTRATION)) {
@@ -24,11 +25,13 @@ public class StationController extends Controller {
     private void register() {
         String stationName = repeat(inputView::readRegistrationStationName);
         StationService.addStation(stationName);
+        outputView.printRegisterStation();
     }
 
     private void delete() {
         String stationName = repeat(inputView::readDeleteStationName);
         StationService.deleteStation(stationName);
+        outputView.printDeleteStation();
     }
 
     private void search() {

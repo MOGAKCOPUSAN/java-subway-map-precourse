@@ -64,7 +64,7 @@ public class InputView {
     }
 
     public String readRegistrationStationName() {
-        System.out.println("## 등록할 역 이름을 입력하세요.\n");
+        System.out.println("## 등록할 역 이름을 입력하세요.");
         return readStationName();
     }
 
@@ -81,7 +81,7 @@ public class InputView {
     }
 
     public String readDeleteStationName() {
-        System.out.println("## 삭제할 역 이름을 입력하세요.\n");
+        System.out.println("## 삭제할 역 이름을 입력하세요.");
         return readStationName();
     }
 
@@ -98,7 +98,7 @@ public class InputView {
     }
 
     public String readRegistrationLineName() {
-        System.out.println("## 등록할 노선 이름을 입력하세요.\n");
+        System.out.println("## 등록할 노선 이름을 입력하세요.");
         return readLineName();
     }
 
@@ -109,17 +109,17 @@ public class InputView {
     }
 
     public String readUpEndLineName() {
-        System.out.println("## 등록할 노선의 상행 종점역 이름을 입력하세요.\n");
+        System.out.println("## 등록할 노선의 상행 종점역 이름을 입력하세요.");
         return readLineName();
     }
 
     public String readDownEndLineName() {
-        System.out.println("## 등록할 노선의 하행 종점역 이름을 입력하세요.\n");
+        System.out.println("## 등록할 노선의 하행 종점역 이름을 입력하세요.");
         return readLineName();
     }
 
     public String readDeleteLineName() {
-        System.out.println("## 삭제할 노선 이름을 입력하세요.\n");
+        System.out.println("## 삭제할 노선 이름을 입력하세요.");
         return readLineName();
     }
 

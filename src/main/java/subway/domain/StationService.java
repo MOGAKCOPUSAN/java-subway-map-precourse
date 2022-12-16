@@ -17,7 +17,11 @@ public class StationService {
     }
 
     public static Station findByName(String name) {
-        return StationRepository.findByName(name);
+        Station station = StationRepository.findByName(name);
+        if (station == null) {
+            throw new IllegalArgumentException("존재하지 않는 역입니다.");
+        }
+        return station;
     }
 
     public static boolean deleteStation(String name) {

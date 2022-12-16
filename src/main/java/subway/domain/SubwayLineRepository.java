@@ -11,7 +11,7 @@ public class SubwayLineRepository {
     private static final HashMap<Line, List<Station>> store = new HashMap<>();
 
     public static HashMap<Line, List<Station>> subwayLines() {
-        return (HashMap<Line, List<Station>>) Collections.unmodifiableMap(store);
+        return store;
     }
 
     public static void addSection(Line line, Station station, int order) {

@@ -16,7 +16,11 @@ public class MainController extends Controller{
         String mainNumber;
         do {
             mainNumber = inputView.readMainNumber();
-            menuMap.get(mainNumber).run();
+            try {
+                menuMap.get(mainNumber).run();
+            } catch (IllegalArgumentException e) {
+                outputView.printError(e.getMessage());
+            }
         } while (!mainNumber.equals(Constants.INPUT_QUIT));
     }
 

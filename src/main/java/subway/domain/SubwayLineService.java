@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SubwayLineService {
@@ -85,5 +86,9 @@ public class SubwayLineService {
         if (stations.size() <= 2) {
             throw new IllegalArgumentException("노선에 포함된 역이 두개 이하일 때는 삭제할 수 없습니다. ");
         }
+    }
+
+    public static HashMap<Line, List<Station>> findAll() {
+        return SubwayLineRepository.subwayLines();
     }
 }
