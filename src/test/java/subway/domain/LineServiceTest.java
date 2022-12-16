@@ -1,6 +1,8 @@
 package subway.domain;
 
 
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,5 +29,21 @@ class LineServiceTest {
         //then
         Assertions.assertThat(LineService.findByName("삭제할역"))
             .isNull();
+    }
+
+    @Test
+    @DisplayName("노선 조회 테스트")
+    void 노선_조회_테스트() {
+        //given
+        Set<String> lineNames = Set.of("노선1", "노선2", "노선3");
+        //when
+        for (String lineName : lineNames) {
+            LineService.addLine(lineName);
+        }
+        //then
+        Set<String> findLines = LineService.findAll().stream()
+            .map(Line::getName)
+            .collect(Collectors.toSet());
+        Assertions.assertThat(findLines).containsAll(lineNames);
     }
 }
