@@ -22,9 +22,9 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    public static boolean isDuplicated(String name) {
+    public static long getStationCountByName(String name) {
         return stations.stream()
                 .filter(station -> station.getName().equals(name))
-                .count() > 0;
+                .count();
     }
 }
