@@ -23,4 +23,11 @@ public class LineService {
         Line line = new Line(lineName, Arrays.asList(upperStation, lowerStation));
         line.add();
     }
+
+    public void delete(String lineName) {
+        if (LineRepository.getLineCountByName(lineName) < 0) {
+            throw new IllegalArgumentException("등록된 노선이 아닙니다.");
+        }
+        LineRepository.deleteLineByName(lineName);
+    }
 }
