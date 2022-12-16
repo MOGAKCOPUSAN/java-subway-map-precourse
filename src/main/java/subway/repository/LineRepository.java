@@ -23,6 +23,13 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
+    public Line findByName(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("해당 이름의 노선이 존재하지 않습니다."));
+    }
+
     public static long getLineCountByName(String name) {
         return lines.stream()
                 .filter(line -> line.getName().equals(name))
