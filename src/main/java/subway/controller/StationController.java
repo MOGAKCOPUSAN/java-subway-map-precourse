@@ -18,6 +18,26 @@ public class StationController {
     private final StationService stationService = new StationService();
     private final OutputView outputView = new OutputView();
 
+    public void run() {
+        String userChoice = getUserChoice();
+        start(userChoice);
+    }
+
+    private void start(String userChoice) {
+        if (userChoice.equals(STATION_REGISTER)) {
+            register();
+        }
+        if (userChoice.equals(STATION_DELETE)) {
+            delete();
+        }
+        if (userChoice.equals(STATION_INQUIRY)) {
+            findAll();
+        }
+        if (userChoice.equals(BACK)) {
+            return;
+        }
+    }
+
     private void findAll() {
         outputView.showStations(stationService.getStations());
     }
