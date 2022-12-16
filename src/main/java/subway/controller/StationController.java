@@ -18,6 +18,16 @@ public class StationController {
     private final StationService stationService = new StationService();
     private final OutputView outputView = new OutputView();
 
+    private void delete() {
+        String stationName = getUserStationName();
+        try {
+            stationService.delete(stationName);
+            outputView.showStationDeleteResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
     private void register() {
         String stationName = getUserStationName();
         try{
