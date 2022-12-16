@@ -27,4 +27,26 @@ class SubwayLineServiceTest {
         Assertions.assertThat(station1.isEndStation())
             .isTrue();
     }
+
+    @Test
+    @DisplayName("종점 삭제시 종점이 바뀐다.")
+    void 종점_삭제시_종점_변경_테스트() {
+        //given
+        LineService.addLine("line");
+        Line line = LineService.findByName("line");
+
+        Station station1 = StationService.addStation("station1");
+        Station station2 = StationService.addStation("station2");
+        Station station3 = StationService.addStation("station3");
+
+        SubwayLineService.addSection(line, station1, 1);
+        SubwayLineService.addSection(line, station2, 2);
+        SubwayLineService.addSection(line, station3, 3);
+
+        Assertions.assertThat(station2.isEndStation()).isFalse();
+        //when
+        SubwayLineService.deleteSection(line, station3);
+        //then
+        Assertions.assertThat(station2.isEndStation()).isTrue();
+    }
 }

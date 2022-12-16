@@ -20,4 +20,12 @@ public class Station {
     public boolean isEndStation() {
         return stationStatus.isEnd();
     }
+
+    public boolean isUpEndStation() {
+        return stationStatus.isUpEnd();
+    }
+
+    public boolean isDownEndStation() {
+        return stationStatus.isDownEnd();
+    }
 }

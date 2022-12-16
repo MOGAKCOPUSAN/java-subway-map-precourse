@@ -3,10 +3,11 @@ package subway.domain;
 import java.util.List;
 
 public class StationService {
-    public static void addStation(String name) {
+    public static Station addStation(String name) {
         validateDuplicateLine(name);
         Station station = new Station(name);
         StationRepository.addStation(station);
+        return station;
     }
 
     private static void validateDuplicateLine(String name) {

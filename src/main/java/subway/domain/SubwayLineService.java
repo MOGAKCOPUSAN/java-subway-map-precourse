@@ -64,6 +64,26 @@ public class SubwayLineService {
 
 
     public static boolean deleteSection(Line line, Station station) {
+        List<Station> stations = SubwayLineRepository.findByLineName(line);
+        validateStationsSize(stations);
+        if (station.isEndStation()) {
+            changeEndStation(stations, station);
+        }
         return SubwayLineRepository.deleteStation(line, station);
+    }
+
+    private static void changeEndStation(List<Station> stations, Station station) {
+        if (station.isUpEndStation()) {
+            stations.get(1).updateStatus(StationStatus.UP_END);
+        }
+        if (station.isDownEndStation()) {
+            stations.get(stations.size() - 2).updateStatus(StationStatus.DOWN_END);
+        }
+    }
+
+    private static void validateStationsSize(List<Station> stations) {
+        if (stations.size() <= 2) {
+            throw new IllegalArgumentException("노선에 포함된 역이 두개 이하일 때는 삭제할 수 없습니다. ");
+        }
     }
 }
