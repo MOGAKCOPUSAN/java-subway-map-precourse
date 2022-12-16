@@ -22,6 +22,13 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
+    public static Station findByName(String name) {
+        return stations().stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("해당 이름을 가진 역이 존재하지 않습니다."));
+    }
+
     public static long getStationCountByName(String name) {
         return stations.stream()
                 .filter(station -> station.getName().equals(name))
