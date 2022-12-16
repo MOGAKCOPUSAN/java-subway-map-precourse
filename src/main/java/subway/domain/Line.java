@@ -56,4 +56,8 @@ public class Line {
             throw new IllegalArgumentException("인덱스 범위를 확인하세요");
         }
     }
+
+    public boolean hasNotStation(Station station) {
+        return !stations.contains(station);
+    }
 }
