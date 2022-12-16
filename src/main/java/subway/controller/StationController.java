@@ -36,6 +36,6 @@ public class StationController extends Controller {
             .stream()
             .map(Station::getName)
             .collect(Collectors.toList());
-        outputView.printResult(stationNames);
+        outputView.printStations(stationNames);
     }
 }
