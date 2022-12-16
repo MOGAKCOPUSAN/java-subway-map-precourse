@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.List;
+
 public class StationService {
     public static void addStation(String name) {
         validateDuplicateLine(name);
@@ -28,5 +30,9 @@ public class StationService {
 //        if (SectionRepository.hasStation(name)) {
 //            throw new IllegalArgumentException("노선에 등록된 역은 삭제할 수 없습니다.");
 //        }
+    }
+
+    public static List<Station> findAll() {
+        return StationRepository.stations();
     }
 }
