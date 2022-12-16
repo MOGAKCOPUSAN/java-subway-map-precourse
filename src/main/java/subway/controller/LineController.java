@@ -18,6 +18,16 @@ public class LineController {
     private final LineService lineService = new LineService();
     private final OutputView outputView = new OutputView();
 
+    private void delete() {
+        String lineName = getDeleteLineName();
+        try {
+            lineService.delete(lineName);
+            outputView.showLineDeleteResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
     private void register() {
         String lineName = getRegisterLineName();
         String upperStation = getUpperStation();
