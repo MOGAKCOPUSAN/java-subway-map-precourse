@@ -60,8 +60,12 @@ public class InputView {
         }
     }
 
-    public String readStationName() {
+    public String readRegistrationStationName() {
         System.out.println("## 등록할 역 이름을 입력하세요.\n");
+        return readStationName();
+    }
+
+    public String readStationName() {
         String input = scanner.nextLine();
         validateStationName(input);
         return input;
@@ -71,6 +75,11 @@ public class InputView {
         if (input.length() < MIN_STATION_NAME_LENGTH) {
             throw new IllegalArgumentException("역 이름은 2글자 이상이어야 합니다.");
         }
+    }
+
+    public String readDeleteStationName() {
+        System.out.println("## 삭제할 역 이름을 입력하세요.\n");
+        return readStationName();
     }
 
 
