@@ -22,9 +22,9 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
-    public static boolean isDuplicated(String name) {
+    public static long isDuplicated(String name) {
         return lines.stream()
                 .filter(line -> line.getName().equals(name))
-                .count() > 0;
+                .count();
     }
 }
