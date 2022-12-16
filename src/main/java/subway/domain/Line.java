@@ -41,4 +41,19 @@ public class Line {
     public void add() {
         LineRepository.addLine(this);
     }
+
+    public void insert(Station station, int index) {
+        validateIndex(index);
+        if (index == stations.size()) {
+            stations.add(station);
+            return;
+        }
+        stations.add(index, station);
+    }
+
+    private void validateIndex(int index) {
+        if (index < 0 || index > stations.size()) {
+            throw new IllegalArgumentException("인덱스 범위를 확인하세요");
+        }
+    }
 }
