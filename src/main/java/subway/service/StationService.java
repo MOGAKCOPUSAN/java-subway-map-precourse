@@ -1,6 +1,9 @@
 package subway.service;
 
 import subway.domain.Station;
+import subway.repository.StationRepository;
+
+import java.util.List;
 
 public class StationService {
 
@@ -11,5 +14,9 @@ public class StationService {
 
         Station station = new Station(stationName);
         station.add();
+    }
+
+    public List<Station> getStations() {
+        return StationRepository.stations();
     }
 }
