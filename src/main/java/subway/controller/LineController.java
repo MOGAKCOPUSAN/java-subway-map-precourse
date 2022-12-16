@@ -18,6 +18,26 @@ public class LineController {
     private final LineService lineService = new LineService();
     private final OutputView outputView = new OutputView();
 
+    public void run() {
+        String userChoice = getUserChoice();
+        start(userChoice);
+    }
+
+    private void start(String userChoice) {
+        if (userChoice.equals(LINE_REGISTER)) {
+            register();
+        }
+        if (userChoice.equals(LINE_DELETE)) {
+            delete();
+        }
+        if (userChoice.equals(LINE_INQUIRY)) {
+            findAll();
+        }
+        if (userChoice.equals(BACK)) {
+            return;
+        }
+    }
+
     private void findAll() {
         outputView.showLines(lineService.getLines());
     }
