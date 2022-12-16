@@ -14,4 +14,18 @@ class StationServiceTest {
         Assertions.assertThatThrownBy(() -> StationService.addStation("새로운역"))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("역을 삭제하면 역의 이름으로 찾았을 때 null을 반환한다")
+    void 역_삭제_테스트() {
+        //given
+        StationService.addStation("삭제할역");
+        Assertions.assertThat(StationService.findByName("삭제할역"))
+            .isNotNull();
+        //when
+        StationService.deleteStation("삭제할역");
+        //then
+        Assertions.assertThat(StationService.findByName("삭제할역"))
+            .isNull();
+    }
 }
