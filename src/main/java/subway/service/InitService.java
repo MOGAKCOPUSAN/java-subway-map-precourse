@@ -1,4 +1,4 @@
-package subway.controller;
+package subway.service;
 
 import subway.domain.Line;
 import subway.domain.Station;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InitController {
+public class InitService {
 
     public void init() {
         initStation();
