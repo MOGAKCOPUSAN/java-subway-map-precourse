@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.repository.StationRepository;
+
 public class Station {
 
     private String name;
@@ -18,5 +20,9 @@ public class Station {
         if (name.length() < 2) {
             throw new IllegalArgumentException("지하철 역 이름은 2글자 이상이어야 합니다.");
         }
+    }
+
+    public boolean isDuplicated(String name) {
+        return StationRepository.isDuplicated(name);
     }
 }
