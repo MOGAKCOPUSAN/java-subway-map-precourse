@@ -1,5 +1,6 @@
 package subway.domain;
 
+import subway.repository.LineRepository;
 import subway.repository.StationRepository;
 
 public class Station {
@@ -29,4 +30,9 @@ public class Station {
     public void add() {
         StationRepository.addStation(this);
     }
+
+    public boolean isRegistered() {
+        return LineRepository.getStationCountInLines(this) > 0;
+    }
+
 }
