@@ -18,6 +18,10 @@ public class LineController {
     private final LineService lineService = new LineService();
     private final OutputView outputView = new OutputView();
 
+    private void findAll() {
+        outputView.showLines(lineService.getLines());
+    }
+
     private void delete() {
         String lineName = getDeleteLineName();
         try {
