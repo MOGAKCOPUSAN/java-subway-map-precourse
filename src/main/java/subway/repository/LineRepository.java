@@ -1,6 +1,7 @@
 package subway.repository;
 
 import subway.domain.Line;
+import subway.domain.Station;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,9 +23,15 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
-    public static long isDuplicated(String name) {
+    public static long getLineCountByName(String name) {
         return lines.stream()
                 .filter(line -> line.getName().equals(name))
+                .count();
+    }
+
+    public static long getStationCountInLines(Station station) {
+        return lines.stream()
+                .filter(line -> line.getStations().contains(station))
                 .count();
     }
 }
