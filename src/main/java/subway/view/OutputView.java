@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
 
@@ -51,5 +52,18 @@ public class OutputView {
 
     public void printDeleteSection() {
         System.out.println(RESULT_PREFIX + "구간이 삭제되었습니다.");
+    }
+
+    public void printSubwayLines(Map<String, List<String>> result) {
+        System.out.println("## 지하철 노선도");
+        result.keySet().stream()
+            .forEach(key -> {
+                System.out.println(RESULT_PREFIX + key);
+                System.out.println(RESULT_PREFIX + "---");
+                result.get(key).stream()
+                    .forEach(stationName -> {
+                        System.out.println(RESULT_PREFIX + stationName);
+                    });
+            });
     }
 }
