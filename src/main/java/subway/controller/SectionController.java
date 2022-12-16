@@ -17,6 +17,23 @@ public class SectionController {
     private final SectionService sectionService = new SectionService();
     private final OutputView outputView = new OutputView();
 
+    public void run() {
+        String userChoice = getUserChoice();
+        start(userChoice);
+    }
+
+    private void start(String userChoice) {
+        if (userChoice.equals(SECTION_REGISTER)) {
+            register();
+        }
+        if (userChoice.equals(SECTION_DELETE)) {
+            delete();
+        }
+        if (userChoice.equals(BACK)) {
+            return;
+        }
+    }
+
     private void delete() {
         String lineName = getDeleteLine();
         String stationName = getDeleteStationName();
