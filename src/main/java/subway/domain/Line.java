@@ -34,8 +34,8 @@ public class Line {
         }
     }
 
-    public boolean isDuplicated(String name) {
-        return LineRepository.isDuplicated(name) > 0;
+    public static boolean isDuplicated(String name) {
+        return LineRepository.getLineCountByName(name) > 0;
     }
 
     public void add() {
