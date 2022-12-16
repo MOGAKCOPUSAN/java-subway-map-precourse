@@ -12,4 +12,13 @@ public class SectionService {
         Station station = StationRepository.findByName(stationName);
         line.insert(station, index - 1);
     }
+
+    public void delete(String lineName, String stationName) {
+        Line line = LineRepository.findByName(lineName);
+        Station station = StationRepository.findByName(stationName);
+        if (line.hasNotStation(station)) {
+            throw new IllegalArgumentException("해당 노선이 해당 역을 가지고 있지 않습니다.");
+        }
+        line.delete(station);
+    }
 }
