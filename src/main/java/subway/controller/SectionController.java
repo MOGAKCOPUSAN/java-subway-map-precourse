@@ -17,6 +17,18 @@ public class SectionController {
     private final SectionService sectionService = new SectionService();
     private final OutputView outputView = new OutputView();
 
+    private void register() {
+        String lineName = getRegisterLine();
+        String stationName = getRegisterStationName();
+        int sectionIndex = getSectionIndex();
+        try {
+            sectionService.add(lineName, stationName, sectionIndex);
+            outputView.showSectionRegisterResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
     private String getUserChoice() {
         try {
             return sectionInputView.getSectionManageChoice();
