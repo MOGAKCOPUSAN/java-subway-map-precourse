@@ -18,6 +18,11 @@ public class StationController {
     private final StationService stationService = new StationService();
     private final OutputView outputView = new OutputView();
 
+    private void findAll() {
+        outputView.showStations(stationService.getStations());
+    }
+
+
     private void delete() {
         String stationName = getUserStationName();
         try {
