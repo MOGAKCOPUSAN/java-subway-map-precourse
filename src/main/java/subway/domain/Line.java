@@ -19,6 +19,10 @@ public class Line {
         return name;
     }
 
+    public List<Station> getStations() {
+        return stations;
+    }
+
     // 추가 기능 구현
     public void validate(String name, List<Station> stations) {
         if (name.length() < 2) {
