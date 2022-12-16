@@ -17,6 +17,18 @@ public class SectionController {
     private final SectionService sectionService = new SectionService();
     private final OutputView outputView = new OutputView();
 
+    private void delete() {
+        String lineName = getDeleteLine();
+        String stationName = getDeleteStationName();
+        try {
+            sectionService.delete(lineName, stationName);
+            outputView.showSectionDeleteResultMessage();
+        } catch (IllegalArgumentException e) {
+            Log.error(e.getMessage());
+        }
+    }
+
+
     private void register() {
         String lineName = getRegisterLine();
         String stationName = getRegisterStationName();
