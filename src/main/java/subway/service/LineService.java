@@ -5,6 +5,7 @@ import subway.domain.Station;
 import subway.repository.LineRepository;
 import subway.repository.StationRepository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class LineService {
         if (Line.isDuplicated(lineName)) {
             throw new IllegalArgumentException("이미 등록된 노선 이름입니다.");
         }
-        Line line = new Line(lineName, Arrays.asList(upperStation, lowerStation));
+        Line line = new Line(lineName, new ArrayList<>(Arrays.asList(upperStation, lowerStation)));
         line.add();
     }
 
